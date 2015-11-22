@@ -1,0 +1,35 @@
+{
+  "name": "json-schema-mockserve",
+  "version": "0.1.0",
+  "description": "",
+  "main": "bin/mockserve.js",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "mockserve": "./bin/mockserve.js"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "test": "mocha test/**/*-test.js",
+    "mocha": "mocha"
+  },
+  "directories": {
+    "test": "test/"
+  },
+  "author": "ushiboy",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "espower-babel": "^3.3.0",
+    "mocha": "^2.3.2",
+    "power-assert": "^1.0.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^5.8.24",
+    "body-parser": "^1.14.1",
+    "commander": "^2.8.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  }
+}
