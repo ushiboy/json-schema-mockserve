@@ -1,7 +1,8 @@
 {
   "name": "json-schema-mockserve",
   "version": "0.1.0",
-  "description": "",
+  "description": "The mock api server by json schema",
+  "repository": "https://github.com/ushiboy/json-schema-mockserve",
   "main": "bin/mockserve.js",
   "files": [
     "src",
