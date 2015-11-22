@@ -15,14 +15,10 @@ if (schemaFilePath === undefined) {
 } else {
   var MockServe = require('../lib/MockServe');
   if (!path.isAbsolute(schemaFilePath)) {
-    new MockServe({
-      port: parseInt(program.port, 10),
-      path: path.join(process.cwd(), schemaFilePath)
-    }).start();
-  } else {
-    new MockServe({
-      port: parseInt(program.port, 10),
-      path: schemaFilePath
-    }).start();
+    schemaFilePath = path.join(process.cwd(), schemaFilePath);
   }
+  new MockServe({
+    port: parseInt(program.port, 10),
+    path: schemaFilePath
+  }).start();
 }
