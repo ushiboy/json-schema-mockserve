@@ -1,10 +1,13 @@
 {
   "name": "json-schema-mockserve",
   "version": "0.1.0",
-  "description": "",
-  "main": "bin/mockserve.js",
+  "description": "The mock api server by json schema",
+  "repository": "https://github.com/ushiboy/json-schema-mockserve",
+  "main": "lib/index.js",
   "files": [
-    "lib"
+    "src",
+    "lib",
+    "bin"
   ],
   "bin": {
     "mockserve": "./bin/mockserve.js"
@@ -13,9 +16,6 @@
     "build": "babel src --out-dir lib",
     "test": "mocha test/**/*-test.js",
     "mocha": "mocha"
-  },
-  "directories": {
-    "test": "test/"
   },
   "author": "ushiboy",
   "license": "MIT",
