@@ -1,12 +1,13 @@
 # Json Schema MockServe
 
-json-schema-mockserve is an
+json-schema-mockserve is a
 mock API server using JSON Schema file.
 
 
 ## Usage
 
 ```
+$ npm install -g json-schema-mockserve
 $ mockserve schema.json -p 8080
 ```
 ![usage](./usage.png)
@@ -16,7 +17,7 @@ $ mockserve schema.json -p 8080
 
 Install dependencies.
 ```
-$ npm install --save-dev gulp connect serve-static http-proxy-middleware
+$ npm install --save-dev gulp connect serve-static http-proxy-middleware json-schema-mockserve
 ```
 
 Add gulp task.
