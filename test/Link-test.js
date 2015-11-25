@@ -272,7 +272,7 @@ describe('Link', () => {
       } catch(e) {
         result = e.message;
       }
-      assert(result === 'No example found for "name" at [./user/properties]');
+      assert(result === 'No example found for "name"');
     });
   });
 });
