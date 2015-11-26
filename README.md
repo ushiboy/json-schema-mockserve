@@ -12,6 +12,55 @@ $ mockserve schema.json -p 8080
 ```
 ![usage](./usage.png)
 
+## Example
+
+JSON Schema file example.
+```json
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": "object",
+  "definitions": {
+    "user": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "User",
+      "description": "fixture for test",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": "object",
+      "definitions": {
+        "name": {
+          "description": "name of user",
+          "example": "alice",
+          "type": "string"
+        }
+      },
+      "links": [
+        {
+          "description": "List existing users.",
+          "href": "/users",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/user/definitions/name"
+        }
+      }
+    }
+  },
+  "properties": {
+    "user": {
+      "$ref": "#/definitions/user"
+    }
+  }
+}
+```
+In this case, GET /users http response looks like this:
+```
+[{"name":"alice"}]
+```
 
 ## Usage with gulp + connect
 

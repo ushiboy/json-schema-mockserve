@@ -54,14 +54,14 @@ export default class Link {
     return JSON.stringify(result);
   }
 
-  static generateResponse(properties, path='.') {
+  static generateResponse(properties) {
     return Object.keys(properties).reduce((result, key) => {
       const value = properties[key];
       const { example, items, type } = value;
       const types = Array.isArray(type) ? type : [type];
 
       if (value.properties) {
-        result[key] = this.generateResponse(value.properties, `${path}/${key}/properties`);
+        result[key] = this.generateResponse(value.properties);
       } else if (example !== undefined) {
         result[key] = example;
       } else if (types.some(v => v === 'null')) {
@@ -70,10 +70,10 @@ export default class Link {
         if (items.example !== undefined) {
           result[key] = [items.example];
         } else {
-          result[key] = [this.generateResponse(items.properties, `${path}/${key}/items/properties`)];
+          result[key] = [this.generateResponse(items.properties)];
         }
       } else {
-        throw new Error(`No example found for "${key}" at [${path}]`);
+        throw new Error(`No example found for "${key}"`);
       }
       return result;
     }, {});

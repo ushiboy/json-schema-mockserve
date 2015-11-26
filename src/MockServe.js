@@ -2,7 +2,6 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import Schema from './Schema';
-import util from 'util';
 
 export default class MockServe {
 
@@ -21,15 +20,20 @@ export default class MockServe {
     const { resources } = schema;
     Object.keys(resources).forEach(name => {
       const resource = resources[name];
-      resource.links.forEach(link => {
+      resource.links.forEach((link, index) => {
         const method = link.getMethod().toLowerCase();
+        try {
+          link.getResponseBody();
+        } catch(e) {
+          throw new Error(`${e.message} at definitions.${name}.links[${index}]`);
+        }
         if (this._app[method]) {
           this._app[method](link.getHref(), (req, res) => {
             res.set('Content-Type', link.getContentType());
             res.status(link.getResponseStatus()).send(link.getResponseBody());
           });
         } else {
-          util.log(new Error('Not Support.'));
+          throw new Error('Not Support.');
         }
       });
     });
